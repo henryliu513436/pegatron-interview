@@ -59,23 +59,11 @@ def test_generate_dataset_value_ranges():
         assert (normal_vals >= n_min).all()
         assert (normal_vals <= n_max).all()
 
-        # Abnormal points: Must have at least one sensor in abnormal range
-        # Note: The specification says abnormal rows MUST have at least one abnormal value.
-        # We check that abnormal labels correspond to values outside normal ranges.
-        abnormal_rows = df[df["label"] == "abnormal"]
-        # For each abnormal row, at least one sensor must be outside its normal range
-        for _, row in abnormal_rows.iterrows():
-            has_abnormal = False
-            for s in ["temp", "pressure", "vibration"]:
-                val = row[s]
-                if pd.isna(val): continue
-
-                s_ranges = GEN_RANGES[s]
-                n_min, n_max = s_ranges["normal"]
-                if val < n_min or val > n_max:
-                    has_abnormal = True
-                    break
-            assert has_abnormal, f"Row with label abnormal has all sensors in normal range: {row}"
+        # Abnormal points
+        # Note: Due to 'drift' events, some abnormal rows may have values within normal ranges.
+        # We only verify that labels 'normal' are ALWAYS within normal ranges.
+        # The inverse (all 'abnormal' must have abnormal values) is no longer true.
+        pass
 
 def test_generate_dataset_min_samples_error():
     with pytest.raises(ValueError):
@@ -90,6 +78,109 @@ def test_generate_dataset_output_file():
     # timestamp becomes object, check content
     assert len(df_read) == len(df)
     assert (df_read["label"] == df["label"].values).all()
+
+def test_anomalies_present_in_all_blocks():
+    # Test that anomalies are distributed across train, cal, and test blocks
+    df = generate_dataset()
+    n = len(df)
+
+    # Use ratios from config to slice the df
+    from config import TRAIN_RATIO, CAL_RATIO
+    split_a = int(n * TRAIN_RATIO)
+    split_b = int(n * (TRAIN_RATIO + CAL_RATIO))
+
+    block_a = df.iloc[:split_a]
+    block_b = df.iloc[split_a:split_b]
+    block_c = df.iloc[split_b:]
+
+    assert (block_a["label"] == "abnormal").any(), "Block A (Train) must contain at least one anomaly"
+    assert (block_b["label"] == "abnormal").any(), "Block B (Cal) must contain at least one anomaly"
+    assert (block_c["label"] == "abnormal").any(), "Block C (Test) must contain at least one anomaly"
+
+def test_anomalies_present_in_all_blocks():
+    # Test that anomalies are distributed across train, cal, and test blocks
+    df = generate_dataset()
+    n = len(df)
+
+    # Use ratios from config to slice the df
+    from config import TRAIN_RATIO, CAL_RATIO
+    split_a = int(n * TRAIN_RATIO)
+    split_b = int(n * (TRAIN_RATIO + CAL_RATIO))
+
+    block_a = df.iloc[:split_a]
+    block_b = df.iloc[split_a:split_b]
+    block_c = df.iloc[split_b:]
+
+    assert (block_a["label"] == "abnormal").any(), "Block A (Train) must contain at least one anomaly"
+    assert (block_b["label"] == "abnormal").any(), "Block B (Cal) must contain at least one anomaly"
+    assert (block_c["label"] == "abnormal").any(), "Block C (Test) must contain at least one anomaly"
+
+def test_normal_values_are_gaussian_like():
+    """
+    Verify that normal values follow a Gaussian-like distribution (std is significantly
+    smaller than a uniform distribution over the same range).
+    """
+    df = generate_dataset(n_rows=1000)
+    normal_df = df[df["label"] == "normal"]
+
+    for sensor, ranges in GEN_RANGES.items():
+        vals = normal_df[sensor].dropna()
+        n_min, n_max = ranges["normal"]
+        actual_std = vals.std()
+
+        # Theoretical std of uniform distribution: (max - min) / sqrt(12)
+        uniform_std = (n_max - n_min) / np.sqrt(12)
+
+        # Normal distribution should have a tighter cluster around the mean
+        # We verify that the actual std is strictly less than the theoretical uniform std.
+        threshold = 1.0
+        assert actual_std < uniform_std * threshold, f"{sensor}: Normal values should be more Gaussian-like (std {actual_std:.4f} < {uniform_std:.4f})"
+
+def test_spike_drift_are_multivariate():
+    """
+    Verify that spike and drift events are multivariate (all 3 sensors abnormal simultaneously).
+    """
+    df = generate_dataset(n_rows=1000)
+    abnormal_df = df[df["label"] == "abnormal"]
+
+    found_multivariate = False
+    for _, row in abnormal_df.iterrows():
+        all_abnormal = True
+        for s in ["temp", "pressure", "vibration"]:
+            val = row[s]
+            if pd.isna(val):
+                all_abnormal = False
+                break
+            n_min, n_max = GEN_RANGES[s]["normal"]
+            if n_min <= val <= n_max:
+                all_abnormal = False
+                break
+        if all_abnormal:
+            found_multivariate = True
+            break
+
+    assert found_multivariate, "Should find at least one row where all 3 sensors are simultaneously abnormal"
+
+def test_drift_has_rule_invisible_rows():
+    """
+    Verify that drift events create abnormal rows that are invisible to rule-based detectors
+    (values still within normal range but label is abnormal).
+    """
+    df = generate_dataset(n_rows=1000)
+    # Look for rows where label is abnormal but NO sensor is outside normal range
+    invisible_rows = df[df["label"] == "abnormal"].copy()
+
+    def is_strictly_normal(row):
+        for s in ["temp", "pressure", "vibration"]:
+            val = row[s]
+            if pd.isna(val): continue
+            n_min, n_max = GEN_RANGES[s]["normal"]
+            if val < n_min or val > n_max:
+                return False
+        return True
+
+    invisible_rows = invisible_rows[invisible_rows.apply(is_strictly_normal, axis=1)]
+    assert len(invisible_rows) > 0, "Drift events should produce abnormal rows that are invisible to simple range rules"
 
 if __name__ == "__main__":
     pytest.main([__file__])

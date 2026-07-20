@@ -80,10 +80,16 @@ def temporal_split(
     cal = df_b[df_b["label"] == "normal"].copy()
     test = df_c.copy()
 
+    # First check for minimum sample requirements
     if len(train_fit) < MIN_REQUIRED_SAMPLES or \
        len(cal) < MIN_REQUIRED_SAMPLES or \
        len(test) < MIN_REQUIRED_SAMPLES:
         raise ValueError(f"One or more split blocks have fewer than {MIN_REQUIRED_SAMPLES} samples")
+
+    # Then check if test block contains any abnormal rows to avoid silent 0-metric evaluations
+    if not (test["label"] == "abnormal").any():
+        raise ValueError("The test segment (Block C) does not contain any abnormal rows. "
+                         "This will lead to 0-metrics in evaluation. Please regenerate data.")
 
     return train_fit, cal, test
 

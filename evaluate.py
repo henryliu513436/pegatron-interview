@@ -35,7 +35,7 @@ def evaluate(test_df_with_predictions: pd.DataFrame, label_col: str = "label") -
         precision = precision_score(y_true, y_pred, zero_division=0)
         recall = recall_score(y_true, y_pred, zero_division=0)
         f1 = f1_score(y_true, y_pred, zero_division=0)
-        cm = confusion_matrix(y_true, y_pred).tolist()
+        cm = confusion_matrix(y_true, y_pred, labels=[0, 1]).tolist()
 
         results[name] = {
             "precision": precision,

@@ -206,11 +206,19 @@ def generate_dataset(
 ) -> pd.DataFrame:
 ```
 - 欄位：`timestamp`(str, `'YYYY-MM-DD HH:MM:SS'`)、`temp`/`pressure`/`vibration`(float)、`label`(`'normal'|'abnormal'`)。
-- 依 `anomaly_ratio` 決定每列是否為異常列；異常列的三個感測值中至少一項落在對應 `abnormal_*` 區間，其餘落在 `normal_*` 區間；normal 列三個感測值均落在 normal 區間內。抽樣需以 `seed` 保證可重現。
-- 產生後對 `temp/pressure/vibration` 依 `missing_ratio` 隨機注入 `NaN`；`timestamp`、`label` 不得為 `NaN`。
+- 異常事件必須均勻分佈於整段時間軸（例如隨機分佈起始點），不得因配額提前用完而導致序列後段僅有正常資料。
+- 異常類型設計：
+    - Spike 與 Drift：代表機台故障，三個感測器同時聯動異常。
+    - Stuck：代表感測器訊號卡住，僅影響單一感測器。
+- 標記邏輯：
+    - Spike 與 Stuck：依四捨五入後的數值是否超出 `normal` 區間判定 `label='abnormal'`。
+    - Drift：整個事件段落（從起始點到結束點）一律標記為 `label='abnormal'`，不依逐點數值判定。
+- 依 `anomaly_ratio` 決定異常列總量；異常列的三個感測值中至少一項落在對應 `abnormal_*` 區間，其餘落在 `normal_*`  l區間；normal 列三個感測值均落在 normal 區間內。抽樣需以 `seed` 保證可重現。
+- 產生後對 `temp`/`pressure`/`vibration` 依 `missing_ratio` 隨機注入 `NaN`；`timestamp`、`label` 不得為 `NaN`。
 - **固定行為為覆寫 `output_path`**（不做檔案存在性檢查）；因 `seed` 固定，同一份 config 下每次執行結果相同，不需要保留舊檔。
 - 回傳依 `timestamp` 遞增排序的 DataFrame。
 - 例外：`n_rows < MIN_REQUIRED_SAMPLES` 時 `raise ValueError`；輸出目錄不存在時自動建立。
+- **驗收條件**：經過 `temporal_split()` 切分後的 test 段（最後 15%）必須含有 abnormal 列。
 
 ### `preprocess.py`
 

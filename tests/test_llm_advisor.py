@@ -14,7 +14,7 @@ def test_template_suggestion_content():
         "temp": 55.0, "pressure": 1.02, "vibration": 0.08
     }
     sugg_critical = template_suggestion(rec_critical)
-    assert "CRITICAL" in sugg_critical
+    assert "嚴重警告" in sugg_critical
     assert "temp" in sugg_critical
     assert "vibration" in sugg_critical
 
@@ -25,7 +25,7 @@ def test_template_suggestion_content():
         "temp": 47.0, "pressure": 1.10, "vibration": 0.03
     }
     sugg_medium = template_suggestion(rec_medium)
-    assert "MEDIUM" in sugg_medium
+    assert "中度警告" in sugg_medium
     assert "pressure" in sugg_medium
 
 def test_generate_suggestion_no_llm():

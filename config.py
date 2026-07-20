@@ -2,12 +2,20 @@
 # Central configuration for the Smart Factory Alert Agent
 
 # ---------- Data generation ----------
-N_ROWS = 300
+N_ROWS = 500
 ANOMALY_RATIO = 0.10
 MISSING_RATIO = 0.02          # Only applied to temp/pressure/vibration
 INTERVAL_MINUTES = 1
 START_TIME = "2024-06-03 19:00:00"
 RANDOM_SEED = 42
+
+# Normal distribution parameters for sensors: (mean, std)
+# Used for np.clip(rng.normal(mean, std), normal_min, normal_max)
+NORMAL_DIST_PARAMS = {
+    "temp":      (47.5, 1.0),
+    "pressure":  (1.025, 0.012),
+    "vibration": (0.03, 0.005),
+}
 
 THRESHOLDS = {
     "temp":      {"normal_min": 45.0, "normal_max": 50.0, "abnormal_high": 52.0, "abnormal_low": 43.0},
@@ -29,17 +37,17 @@ MIN_REQUIRED_SAMPLES = 10
 GEN_RANGES = {
     "temp": {
         "normal": (45.0, 50.0),
-        "abnormal_high": (52.5, 56.0), # > 52.0
-        "abnormal_low": (38.0, 42.5),  # < 43.0
+        "min_limit": 35.0,
+        "max_limit": 60.0,
     },
     "pressure": {
         "normal": (1.00, 1.05),
-        "abnormal_high": (1.09, 1.15), # > 1.08
-        "abnormal_low": (0.85, 0.96),  # < 0.97
+        "min_limit": 0.80,
+        "max_limit": 1.20,
     },
     "vibration": {
         "normal": (0.02, 0.04),
-        "abnormal_high": (0.08, 0.12), # > 0.07
+        "max_limit": 0.15, # Vibration only generates abnormal_high
     },
 }
 

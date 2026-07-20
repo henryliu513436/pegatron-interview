@@ -1,36 +1,61 @@
 import time
 import os
 import pandas as pd
+from rich.console import Console
+from rich.panel import Panel
+from rich.text import Text
 from config import ALERTS_LOG_PATH, DEFAULT_REPLAY_SPEED
+
+console = Console()
 
 def render_alert(alert_row: dict, suggestion: str, is_fallback: bool) -> str:
     """
-    Formats a single alert into a readable string for CLI output and logging.
-
-    Mandatory elements per spec:
-    1. Anomaly markers (timestamp, severity)
-    2. ML Score (ml_score)
-    3. Actionable suggestion (suggestion text)
+    Formats a single alert for CLI output using 'rich' and returns a plain string for logging.
     """
     ts = alert_row.get("timestamp", "Unknown Time")
     severity = alert_row.get("severity", "UNKNOWN")
     sensors = alert_row.get("triggered_sensors", "unknown")
     score = alert_row.get("ml_score", 0.0)
 
-    # Formatting with visual markers for severity
-    marker = f"[{severity}]" if severity else "[NORMAL]"
-
-    formatted = (
-        f"[{ts}] {marker} | "
+    # 1. Build the plain string for logging
+    log_marker = f"[{severity}]" if severity else "[NORMAL]"
+    formatted_log = (
+        f"[{ts}] {log_marker} | "
         f"score={score:.4f} | "
         f"sensors={sensors} | "
         f"suggestion={suggestion} | "
         f"fallback={is_fallback}"
     )
 
-    # Print to terminal (CLI rendering)
-    print(formatted)
-    return formatted
+    # 2. Build the rich display for CLI
+    # Severity colors
+    severity_color = "white"
+    if severity == "CRITICAL":
+        severity_color = "bold red"
+    elif severity == "HIGH":
+        severity_color = "bold yellow"
+    elif severity == "MEDIUM":
+        severity_color = "cyan"
+
+    # Construct visual content
+    content = Text()
+    content.append(f"{ts} ", style="dim")
+    content.append(f" {severity} ", style=severity_color)
+    content.append(f" | Sensors: {sensors} | Score: {score:.4f}\n", style="white")
+    content.append(f"Suggestion: {suggestion}", style="italic green")
+    if is_fallback:
+        content.append(" (Fallback Template)", style="dim yellow")
+
+    # Render as a panel
+    panel = Panel(
+        content,
+        title="⚠️ Factory Alert",
+        border_style=severity_color,
+        expand=False
+    )
+
+    console.print(panel)
+    return formatted_log
 
 def append_to_log(formatted_alert: str, log_path: str = ALERTS_LOG_PATH) -> None:
     """
@@ -44,11 +69,14 @@ def replay(alerts_df: pd.DataFrame, suggestions: list, replay_speed: float = DEF
     """
     Replays alerts sequentially, calling render and log.
     """
-    # suggestions is a list of (text, is_fallback) tuples
     for idx, row in alerts_df.iterrows():
+        # suggestions is a list of (text, is_fallback) tuples
+        # Ensure index match (alerts_df has reset index in agent.py)
+        if idx >= len(suggestions):
+            break
+
         sugg_text, is_fallback = suggestions[idx]
 
-        # Convert row to dict for render_alert
         alert_dict = row.to_dict()
 
         formatted = render_alert(alert_dict, sugg_text, is_fallback)

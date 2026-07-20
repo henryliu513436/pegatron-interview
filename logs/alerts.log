@@ -23,3 +23,139 @@
 [2024-06-03 23:26:00] [CRITICAL] | score=0.0703 | sensors=vibration | suggestion=CRITICAL ALERT: Multiple sensors (vibration) show extreme values. Immediate emergency shutdown and manual inspection required. | fallback=True
 [2024-06-03 23:27:00] [MEDIUM] | score=-0.0014 | sensors=temp | suggestion=MEDIUM ALERT: ML detector flagged unusual pattern in temp. Monitor closely for potential drift. | fallback=True
 [2024-06-03 23:28:00] [MEDIUM] | score=0.0579 | sensors=temp | suggestion=MEDIUM ALERT: ML detector flagged unusual pattern in temp. Monitor closely for potential drift. | fallback=True
+[2024-06-04 00:44:00] [CRITICAL] | score=0.0990 | sensors=pressure | suggestion=CRITICAL ALERT: Multiple sensors (pressure) show extreme values. Immediate emergency shutdown and manual inspection required. | fallback=True
+[2024-06-04 00:45:00] [CRITICAL] | score=0.0510 | sensors=pressure | suggestion=CRITICAL ALERT: Multiple sensors (pressure) show extreme values. Immediate emergency shutdown and manual inspection required. | fallback=True
+[2024-06-04 00:46:00] [CRITICAL] | score=0.0303 | sensors=pressure | suggestion=CRITICAL ALERT: Multiple sensors (pressure) show extreme values. Immediate emergency shutdown and manual inspection required. | fallback=True
+[2024-06-04 00:47:00] [CRITICAL] | score=0.0257 | sensors=pressure | suggestion=CRITICAL ALERT: Multiple sensors (pressure) show extreme values. Immediate emergency shutdown and manual inspection required. | fallback=True
+[2024-06-04 00:48:00] [CRITICAL] | score=0.0449 | sensors=pressure | suggestion=CRITICAL ALERT: Multiple sensors (pressure) show extreme values. Immediate emergency shutdown and manual inspection required. | fallback=True
+[2024-06-04 00:49:00] [MEDIUM] | score=-0.0346 | sensors=pressure | suggestion=MEDIUM ALERT: ML detector flagged unusual pattern in pressure. Monitor closely for potential drift. | fallback=True
+[2024-06-04 00:50:00] [MEDIUM] | score=0.0640 | sensors=pressure | suggestion=MEDIUM ALERT: ML detector flagged unusual pattern in pressure. Monitor closely for potential drift. | fallback=True
+[2024-06-04 00:51:00] [MEDIUM] | score=0.0384 | sensors=vibration | suggestion=MEDIUM ALERT: ML detector flagged unusual pattern in vibration. Monitor closely for potential drift. | fallback=True
+[2024-06-04 00:52:00] [MEDIUM] | score=0.0868 | sensors=pressure | suggestion=MEDIUM ALERT: ML detector flagged unusual pattern in pressure. Monitor closely for potential drift. | fallback=True
+[2024-06-04 00:58:00] [MEDIUM] | score=0.1468 | sensors=pressure | suggestion=MEDIUM ALERT: ML detector flagged unusual pattern in pressure. Monitor closely for potential drift. | fallback=True
+[2024-06-04 01:00:00] [MEDIUM] | score=0.1444 | sensors=pressure | suggestion=MEDIUM ALERT: ML detector flagged unusual pattern in pressure. Monitor closely for potential drift. | fallback=True
+[2024-06-04 01:16:00] [MEDIUM] | score=0.1443 | sensors=pressure | suggestion=MEDIUM ALERT: ML detector flagged unusual pattern in pressure. Monitor closely for potential drift. | fallback=True
+[2024-06-04 01:11:00] [MEDIUM] | score=0.1139 | sensors=pressure | suggestion=MEDIUM ALERT: ML detector flagged unusual pattern in pressure. Monitor closely for potential drift. | fallback=True
+[2024-06-04 01:13:00] [MEDIUM] | score=0.1525 | sensors=vibration | suggestion=MEDIUM ALERT: ML detector flagged unusual pattern in vibration. Monitor closely for potential drift. | fallback=True
+[2024-06-04 01:28:00] [MEDIUM] | score=0.1521 | sensors=vibration | suggestion=MEDIUM ALERT: ML detector flagged unusual pattern in vibration. Monitor closely for potential drift. | fallback=True
+[2024-06-04 01:35:00] [CRITICAL] | score=0.0437 | sensors=temp | suggestion=CRITICAL ALERT: Multiple sensors (temp) show extreme values. Immediate emergency shutdown and manual inspection required. | fallback=True
+[2024-06-04 01:36:00] [CRITICAL] | score=0.0659 | sensors=temp | suggestion=CRITICAL ALERT: Multiple sensors (temp) show extreme values. Immediate emergency shutdown and manual inspection required. | fallback=True
+[2024-06-04 01:37:00] [CRITICAL] | score=0.0493 | sensors=temp | suggestion=CRITICAL ALERT: Multiple sensors (temp) show extreme values. Immediate emergency shutdown and manual inspection required. | fallback=True
+[2024-06-04 01:38:00] [MEDIUM] | score=0.0068 | sensors=vibration | suggestion=MEDIUM ALERT: ML detector flagged unusual pattern in vibration. Monitor closely for potential drift. | fallback=True
+[2024-06-04 01:39:00] [MEDIUM] | score=0.0542 | sensors=pressure | suggestion=MEDIUM ALERT: ML detector flagged unusual pattern in pressure. Monitor closely for potential drift. | fallback=True
+[2024-06-04 01:01:00] [HIGH] | score=0.1576 | sensors=temp | suggestion=Here are a few options for an actionable maintenance suggestion, depending on what kind of equipment this is (e.g., motor bearings, industrial furnace, etc.).
+
+**Choose the option that best fits your equipment:**
+
+---
+
+### Option 1: General Overheating/Mechanical Focus (Most Common)
+
+**Actionable Suggestion:** Inspect the **temperature source/component associated with 'temp'**. Check for cooling fluid leaks, obstructed ventilation vents, or excessive friction points causing localized overheating. *Monitor closely and reduce load if temperature continues to rise.*
+
+### Option 2: Bearing/Motor Focus (If vibration is related)
+
+**Actionable Suggestion:** High temperature combined with the current readings suggests **bearing overload or mechanical binding**. Shut down non-essential processes, isolate power to the unit, and perform a visual inspection of the bearings for signs of pitting, contamination, or excessive play.
+
+### Option 3: Thermal System Focus (If it's a heating/process vessel)
+
+**Actionable Suggestion:** The high temperature reading requires an immediate check of the **heating element integrity and insulation**. Verify that the thermostat/controller is calibrated correctly and ensure no internal blockages are causing localized hotspots.
+
+---
+
+### ⚠️ Priority Immediate Action (To be read aloud):
+
+**"Technician: Acknowledge HIGH severity temp alert. Immediately verify cooling system functionality—check fluid levels, vents, and setpoint calibration. Do not run processes past normal operational parameters until source of heat is confirmed."** | fallback=False
+[2024-06-04 01:02:00] [CRITICAL] | score=0.1170 | sensors=temp | suggestion=**Technician Alert:** High temperature detected at sensor `temp`. Please immediately investigate and check cooling systems/heat source connections. Readings: **temp=38.8**. Caution advised! | fallback=False
+[2024-06-04 01:03:00] [MEDIUM] | score=0.1175 | sensors=pressure | suggestion=## Maintenance Suggestion
+
+**Action:** Inspect and verify the integrity of the **pressure sensor/line** connected to the affected zone. Check for any signs of blockage, wear, or unexpected pressure fluctuations that might correlate with the recorded 1.02 reading.
+
+**Rationale:** The pressure sensor triggered the anomaly alarm. While other readings are stable, the primary focus should be on confirming the accuracy and physical health of the component reporting the elevated pressure reading (assuming 1.02 is outside normal operational bounds). | fallback=False
+[2024-06-04 01:01:00] [HIGH] | score=0.1576 | sensors=temp | suggestion=**Action:** Inspect and recalibrate temperature sensor.
+
+**Details:** Temp reading of 41.6 is significantly high. Check the connection/sensor itself for potential failure or obstruction. Advise monitoring closely while troubleshooting. | fallback=False
+[2024-06-04 01:02:00] [CRITICAL] | score=0.1170 | sensors=temp | suggestion=Given the critical severity and high temperature reading (38.8), the immediate priority is to cool down the affected area and prevent further overheating.
+
+**Actionable Suggestion:**
+
+1. **Check Cooling System Integrity:** Immediately inspect the cooling unit(s) associated with the sensor/machinery for any visible leaks, clogs, or power failures.
+2. **Manually Reduce Load (If Safe):** If possible and safe to do so, temporarily reduce the operational load on the machine generating the heat until temperatures normalize.
+3. **Monitor Trend:** Continue monitoring temperature readings every 5 minutes while taking immediate physical corrective action.
+
+**Safety Precaution:** Ensure all personnel are alerted to stay clear of potential overheating zones. | fallback=False
+[2024-06-04 01:03:00] [MEDIUM] | score=0.1175 | sensors=pressure | suggestion=**Technician Action:** Check pressure line connections and valves associated with the system currently reporting 1.02 PSI to ensure proper seating and torque. Monitor closely for any downward trends in pressure readings. | fallback=False
+[2024-06-04 01:01:00] [HIGH] | score=0.1576 | sensors=temp | suggestion=**Tech Suggestion:** Inspect temperature sensor and surrounding area immediately due to elevated temperature reading (41.6). Check for overheating components or blockages that could cause excessive heat generation. | fallback=False
+[2024-06-04 01:02:00] [CRITICAL] | score=0.1170 | sensors=temp | suggestion=**Action:** Check cooling system immediately. **Reasoning:** High temperature reading (38.8) suggests overheating. Inspect and clean/repair any cooling components to bring temp back to normal operating range. Monitor pressure and vibration levels closely after intervention. | fallback=False
+[2024-06-04 01:03:00] [MEDIUM] | score=0.1175 | sensors=pressure | suggestion=Based on the sensor reading and severity, here's a suggested action plan for the technician:
+
+**Action:** Inspect the pressurized line connected to the `pressure` sensor.
+
+**Reasoning:** The pressure reading (1.02) is elevated compared to typical operating parameters (assuming normal is lower). Check for potential leaks or blockages that could be causing the pressure spike. 
+
+**Safety Note:** Ensure proper PPE is worn before approaching the pressurized system. If the pressure continues to rise rapidly, follow emergency shutdown procedures immediately. | fallback=False
+[2024-06-04 01:01:00] [HIGH] | score=0.1576 | sensors=temp | suggestion=**Action:** Check and monitor temperature sensors near **[Specific Location if known]**.
+
+**Details:** The high temperature reading ($\text{41.6}$) is the critical alarm. Verify sensor calibration and inspect cooling mechanisms (vents, fans) in that area for blockages or failure. Reduce machine load temporarily if needed until the cause is identified. | fallback=False
+[2024-06-04 01:02:00] [CRITICAL] | score=0.1170 | sensors=temp | suggestion=**Action:** Inspect and regulate temperature control unit near sensor. **High temp reading (38.8) is critical.**
+
+*(Note: Current pressure and vibration readings appear within normal operating range.)* | fallback=False
+[2024-06-04 01:03:00] [MEDIUM] | score=0.1175 | sensors=pressure | suggestion=**Technician Action:** Check the pneumatic lines connected to the system's main actuator(s) for any signs of slow leakage or blockage. The slight increase in pressure (1.02) might indicate resistance that needs clearing. Monitor temp and vibration levels closely while inspecting. | fallback=False
+[2024-06-04 01:01:00] [HIGH] | score=0.1576 | sensors=temp | suggestion=**Action:** Inspect temperature sensor and surrounding area immediately.
+
+**Reasoning:** High temperature reading (41.6) with other readings within normal ranges suggests potential localized overheating or sensor malfunction. Check for visible sources of heat or obstruction around the temp sensor first. If no obvious cause is found, consider calibrating or replacing the temperature sensor.
+
+**Safety Note:** Exercise caution when inspecting high-temperature equipment. | fallback=False
+[2024-06-04 01:02:00] [CRITICAL] | score=0.1170 | sensors=temp | suggestion=**Action Required:** Inspect and monitor temperature sensors immediately.
+
+**Reasoning:** The elevated temperature (38.8) is flagged as CRITICAL, which could indicate overheating equipment or sensor malfunction. 
+
+**Steps:**
+1. **Verify Sensor Reading:** Check if other redundant temperature sensors confirm this high reading.
+2. **Inspect Equipment:** Visually inspect the equipment associated with the temp sensor for signs of overheating (e.g., smoke, burning smell).
+3. **Monitor Trends:** Continuously monitor temperature readings and adjust operational parameters if necessary, while awaiting deeper diagnosis. | fallback=False
+[2024-06-04 01:03:00] [MEDIUM] | score=0.1175 | sensors=pressure | suggestion=Here are a few options for the actionable maintenance suggestion, depending on what you want to emphasize:
+
+**Option 1: Direct and Safety-Focused (Recommended)**
+
+> **"Technician Alert: Medium anomaly detected due to elevated pressure reading (1.02). Please inspect the pressure system components immediately—check seals, fittings, and piping for leaks or blockages before resuming normal operations."**
+
+**Option 2: Brief and Task-Oriented**
+
+> **"Action Required: Investigate pressure system at location [Specify Location if known]. Readings are slightly high (1.02). Check for routine wear items like gaskets or buildup."**
+
+**Option 3: Diagnostic/Troubleshooting Focus**
+
+> **"Technician Note: Pressure is marginally elevated. Correlate this with the temperature reading (47.2) to determine if thermal expansion is causing the pressure spike, or if there is an underlying mechanical restriction in the line."**
+
+***
+
+### Why these work:
+
+* **Acknowledge Severity:** They treat "MEDIUM" as actionable rather than just informational.
+* **Target the Variable:** They immediately point to `pressure` because that's the sensor that triggered the alert, even though all readings are provided.
+* **Actionable Verbs:** Words like *Inspect*, *Check*, and *Investigate* tell the technician exactly what to do next. | fallback=False
+[2024-06-04 02:11:00] [CRITICAL] | score=-0.0237 | sensors=pressure;vibration | suggestion=檢查壓力及振動系統，確認是否存在洩漏或過載現象。 | fallback=False
+[2024-06-04 02:12:00] [MEDIUM] | score=-0.0382 | sensors=vibration | suggestion=振動感測器偵測到異常。建議初步檢查設備掛架或軸承是否過度鬆動，可能是輕微的機械共振或部件異物卡住。請注意觀察後續趨勢。 | fallback=False
+[2024-06-04 02:13:00] [MEDIUM] | score=0.0811 | sensors=vibration | suggestion=振動感測器偵測到異常。請檢查設備的機械穩定性，確認是否有異物卡住或軸承鬆動。 | fallback=False
+[2024-06-04 02:14:00] [MEDIUM] | score=0.1006 | sensors=temp | suggestion=溫度偵測異常。請檢查設備散熱系統，確認是否過熱。 | fallback=False
+[2024-06-04 02:15:00] [MEDIUM] | score=0.0178 | sensors=temp | suggestion=請檢查溫度感測器是否過熱或有異常讀數。 | fallback=False
+[2024-06-04 03:13:00] [MEDIUM] | score=0.1230 | sensors=vibration | suggestion=振動感測器偵測到異常。請檢查機台傳動系統，可能需要潤滑或初步調整。 | fallback=False
+[2024-06-04 03:14:00] [MEDIUM] | score=0.0730 | sensors=vibration | suggestion=建議檢查振動感測器周圍是否有異物堆積或異常鬆動，並清潔相關區域。 | fallback=False
+[2024-06-04 03:15:00] [CRITICAL] | score=0.0217 | sensors=temp;pressure | suggestion=溫度過高且壓力偏低，請檢查散熱系統與壓力調節閥。 | fallback=False
+[2024-06-04 03:16:00] [CRITICAL] | score=-0.0175 | sensors=temp;pressure;vibration | suggestion=請立即檢查過熱、壓力及振動儀表單元，可能是設備負載或散熱系統異常。 | fallback=False
+[2024-06-04 03:17:00] [MEDIUM] | score=-0.0369 | sensors=vibration | suggestion=請檢查振動傳感器和相關機械組件，確認是否有鬆動或磨損跡象。 | fallback=False
+[2024-06-04 03:18:00] [MEDIUM] | score=0.0470 | sensors=pressure | suggestion=壓力異常，請檢查儀器管路是否有洩漏或堵塞。 | fallback=False
+[2024-06-04 03:19:00] [MEDIUM] | score=0.0636 | sensors=vibration | suggestion=振動偵測到異常（數值：0.02），請檢查相關機械部件是否有松動或過載現象。 | fallback=False
+[2024-06-04 02:11:00] [CRITICAL] | score=-0.0237 | sensors=pressure;vibration | suggestion=檢查壓力與振動異常。建議初步檢查氣缸或軸承是否有過度負載或鬆動點。 | fallback=False
+[2024-06-04 02:12:00] [MEDIUM] | score=-0.0382 | sensors=vibration | suggestion=振動異常，請檢查設備支撐或連接處的鬆動狀況。 | fallback=False
+[2024-06-04 02:13:00] [MEDIUM] | score=0.0811 | sensors=vibration | suggestion=振動異常，請檢查機械軸承的鬆動或磨損狀況。 | fallback=False
+[2024-06-04 02:14:00] [MEDIUM] | score=0.1006 | sensors=temp | suggestion=溫度異常，請檢查/監測設備散熱系統。 | fallback=False
+[2024-06-04 02:15:00] [MEDIUM] | score=0.0178 | sensors=temp | suggestion=**建議：** 請檢查溫度感測器（temp）是否有異常讀數或是否過熱。留意溫升速率，必要時進行校準或初步清理。 | fallback=False
+[2024-06-04 03:13:00] [MEDIUM] | score=0.1230 | sensors=vibration | suggestion=振動讀數偏高，請檢查機械軸承是否有異常磨損或異物卡塞。 | fallback=False
+[2024-06-04 03:14:00] [MEDIUM] | score=0.0730 | sensors=vibration | suggestion=振動異常，建議檢查設備基礎或傳動部件是否有鬆動或異物卡住。 | fallback=False
+[2024-06-04 03:15:00] [CRITICAL] | score=0.0217 | sensors=temp;pressure | suggestion=**檢查冷卻系統與壓力組件，疑似過熱或洩壓。** | fallback=False
+[2024-06-04 03:16:00] [CRITICAL] | score=-0.0175 | sensors=temp;pressure;vibration | suggestion=溫控、壓力與震動皆異常。請立即檢查設備過熱、洩壓和機械異音來源，並按標準作業程序降級操作或停機維修。 | fallback=False
+[2024-06-04 03:17:00] [MEDIUM] | score=-0.0369 | sensors=vibration | suggestion=請檢查振動感應器周圍的機械部件，確認是否有鬆動或過度磨損。 | fallback=False
+[2024-06-04 03:18:00] [MEDIUM] | score=0.0470 | sensors=pressure | suggestion=壓力感測器數據異常，請檢查系統管路是否有微小洩漏。 | fallback=False
+[2024-06-04 03:19:00] [MEDIUM] | score=0.0636 | sensors=vibration | suggestion=振動感測器讀數異常（0.02），請技術人員檢查設備的機械穩定性和支撐結構，以排除潛在的鬆動或不平衡問題。 | fallback=False

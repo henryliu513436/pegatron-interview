@@ -118,7 +118,7 @@ python3 -m pytest tests/ -v
 本專案採用 **AI-Augmented Engineering** 工作流，將多個 LLM 模型分工協作：
 - **方案設計**：由 Claude Sonnet 5 (claude.ai 免費版) 進行核心 Brainstorming 與技術諮詢。
 - **規格審計**：利用 Gemini 執行「批判模式審計 (Cross-Audit)」找出規格文件中的邏輯矛盾。
-- **自動化開發**：透過 Claude Code 搭配 Ollama (gemma4:31b-cloud) 實作 TDD 流水線並執行自我 Code Review。
+- **自動化開發**：透過 Claude Code 搭配 Ollama (gemma4:31b-cloud) 實作 TDD 流水線。
 - **架構驗證**：利用 Claude Code 搭配 Ollama (nemotron-3-super:cloud) 執行 Code Review 找出 Codebase 的邏輯矛盾並再以人工審核。
 - **驗證反饋**：透過 AI 審計 $\rightarrow$ 人工驗證 $\rightarrow$ 迭代修正的循環，確保系統魯棒性。
 - **完整協作紀錄請參閱**：[docs/ai_usage_log.md](docs/ai_usage_log.md)。

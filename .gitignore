@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.venv/
+venv/
+
+# macOS
+.DS_Store
+
+# 報告草稿與建置中繼檔（最終排版於 Word 完成，report.pdf 為交付物需保留）
+report.md
+report.html
+
+# 公司提供的作業題目原稿，不公開至 public repo
+PEGAAi_ML_Engineer_Assignment*.pdf

@@ -2,6 +2,7 @@ import requests
 import json
 from typing import Tuple
 from config import OLLAMA_MODEL, OLLAMA_HOST, LLM_TIMEOUT_SECONDS, LLM_MAX_RETRIES
+import logging
 
 def template_suggestion(record: dict) -> str:
     """
@@ -58,9 +59,8 @@ def generate_suggestion(record: dict, use_llm: bool = True) -> Tuple[str, bool]:
                 text = result.get("response", "").strip()
                 if text:
                     return text, False
-        except Exception:
-            # Log error internally if needed, but do not raise
-            pass
+        except Exception as e:
+            logging.warning(f"LLM attempt {attempt+1} failed: {e}")
 
     # Fallback if all retries fail or response is empty
     return template_suggestion(record), True

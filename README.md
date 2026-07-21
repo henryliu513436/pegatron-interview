@@ -27,7 +27,7 @@ A Smart Factory Anomaly Detection Agent with Dual-Track Detection and LLM-Powere
 ```bash
 python3 main.py
 ```
-CLI結果
+
 ![LLM生成結果](docs/LLM生成結果.png)
 
 ### 禁用 LLM 模式
@@ -35,48 +35,32 @@ CLI結果
 ```bash
 python3 main.py --no-llm
 ```
-```text
-╭────────────────────────────────────────────── ⚠️ Factory Alert ──────────────────────────────────────────────╮
-│ 2024-06-04 03:14:00  MEDIUM  | Sensors: vibration | Score: 0.0730                                            │
-│ Suggestion: 中度警告：ML 偵測到 vibration 異常模式。請密切監控是否存在漸進劣化 (drift)。 (Fallback Template) │
-╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
-╭────────────────────────────────────────────── ⚠️ Factory Alert ───────────────────────────────────────────────╮
-│ 2024-06-04 03:15:00  CRITICAL  | Sensors: temp;pressure | Score: 0.0217                                       │
-│ Suggestion: 嚴重警告：多個感測器 (temp;pressure) 數值極端。請立即緊急停機並進行人工檢查。 (Fallback Template) │
-╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
-```
+
+**fallback 生成結果**
+
+![fallback生成結果](docs/fallback生成結果.png)
 
 ### 模擬重播模式
 調整告警輸出之間的間隔秒數（例如每筆間隔 0.5 秒）。
 ```bash
 python3 main.py --replay-speed 0.5
 ```
-```text
-╭──────────────────────── ⚠️ Factory Alert ─────────────────────────╮
-│ 2024-06-04 03:14:00  MEDIUM  | Sensors: vibration | Score: 0.0730 │
-│ Suggestion: 請檢查振動傳感器連接或機械部件是否有輕微鬆動或異音。  │
-╰───────────────────────────────────────────────────────────────────╯
-----------------------------------------0.5s----------------------------------------
-╭───────────────────────────────────────── ⚠️ Factory Alert ─────────────────────────────────────────╮
-│ 2024-06-04 03:15:00  CRITICAL  | Sensors: temp;pressure | Score: 0.0217                            │
-│ Suggestion: **立即檢查高溫和壓力異常。建議初步檢查冷卻系統及工件負載，判斷是否為過熱或超壓警報。** │
-╰────────────────────────────────────────────────────────────────────────────────────────────────────╯
-```
+
+![replay生成結果1](docs/replay-1.png)
+
+> ⏱️ 間隔 **0.5 秒**後，輸出下一筆告警
+
+![replay生成結果2](docs/replay-2.png)
+
 
 ### 量化評估模式
 執行偵測器性能評估，計算 Precision / Recall / F1 指標並產出混淆矩陣。
 ```bash
 python3 main.py --evaluate
 ```
-```text
---- Running Evaluation Mode ---
 
-Detector Performance Metrics:
-[RULE] Precision: 1.0000, Recall: 0.5000, F1: 0.6667
-[ML] Precision: 0.4167, Recall: 0.8333, F1: 0.5556
-[ENSEMBLE] Precision: 0.4167, Recall: 0.8333, F1: 0.5556
+![evaluate生成結果](docs/evaluate生成結果.png)
 
-```
 - **評估結果**：（執行 `python3 main.py --evaluate` 產生）
 - **混淆矩陣路徑**：`docs/confusion_matrices.png`
 
@@ -132,3 +116,4 @@ python3 -m pytest tests/ -v
 - **自動化開發**：透過 Claude Code 搭配 Ollama (gemma4:31b-cloud) 實作 TDD 流水線並執行自我 Code Review。
 - **架構驗證**：利用 Claude Code 搭配 Ollama (nemotron-3-super:cloud) 執行 Code Review 找出 Codebase 的邏輯矛盾並再以人工審核。
 - **驗證反饋**：透過 AI 審計 $\rightarrow$ 人工驗證 $\rightarrow$ 迭代修正的循環，確保系統魯棒性。
+- **完整協作紀錄請參閱**：[docs/ai_usage_log.md](docs/ai_usage_log.md)。

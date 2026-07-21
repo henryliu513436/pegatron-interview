@@ -159,3 +159,78 @@
 [2024-06-04 03:17:00] [MEDIUM] | score=-0.0369 | sensors=vibration | suggestion=請檢查振動感應器周圍的機械部件，確認是否有鬆動或過度磨損。 | fallback=False
 [2024-06-04 03:18:00] [MEDIUM] | score=0.0470 | sensors=pressure | suggestion=壓力感測器數據異常，請檢查系統管路是否有微小洩漏。 | fallback=False
 [2024-06-04 03:19:00] [MEDIUM] | score=0.0636 | sensors=vibration | suggestion=振動感測器讀數異常（0.02），請技術人員檢查設備的機械穩定性和支撐結構，以排除潛在的鬆動或不平衡問題。 | fallback=False
+[2024-06-04 01:01:00] [HIGH] | score=0.1576 | sensors=temp | suggestion=**建議：** 立即檢查溫度感測器連接和周邊設備，可能存在過熱源或通風問題。 | fallback=False
+[2024-06-04 01:02:00] [CRITICAL] | score=0.1170 | sensors=temp | suggestion=溫度過高，請立即檢查設備冷卻系統和散熱器。 | fallback=False
+[2024-06-04 01:03:00] [MEDIUM] | score=0.1175 | sensors=pressure | suggestion=請檢查壓力傳感器連接處，疑似存在輕微洩壓或讀數偏差。 | fallback=False
+[2024-06-04 02:11:00] [CRITICAL] | score=-0.0237 | sensors=pressure;vibration | suggestion=請立即檢查高壓與振動儀表，可能是壓力或機械部件有異常。 | fallback=False
+[2024-06-04 02:12:00] [MEDIUM] | score=-0.0382 | sensors=vibration | suggestion=振動異常，請檢查設備的機械穩定性。 | fallback=False
+[2024-06-04 02:13:00] [MEDIUM] | score=0.0811 | sensors=vibration | suggestion=振動感測器偵測到異常。請檢查設備的機械穩定性，特別是相關傳動部件是否有鬆動或異音。 | fallback=False
+[2024-06-04 02:14:00] [MEDIUM] | score=0.1006 | sensors=temp | suggestion=建議：檢查溫度感測器周圍是否有過熱源或空氣流通受阻。 | fallback=False
+[2024-06-04 02:15:00] [MEDIUM] | score=0.0178 | sensors=temp | suggestion=**檢查溫度感測器，確認是否有異常加熱或散熱問題。** | fallback=False
+[2024-06-04 03:13:00] [MEDIUM] | score=0.1230 | sensors=vibration | suggestion=振動感測器讀數偏高。請檢查設備是否有異常的機械游隙或磨損，並進行初步調整或潤滑。 | fallback=False
+[2024-06-04 03:14:00] [MEDIUM] | score=0.0730 | sensors=vibration | suggestion=振動感測器讀數異常，請檢查機械的穩定性和軸承潤滑情況。 | fallback=False
+[2024-06-04 03:15:00] [CRITICAL] | score=0.0217 | sensors=temp;pressure | suggestion=**緊急檢查：溫度及壓力異常。請立即檢查過熱/高壓源，並檢查振動儀是否正常運作。** | fallback=False
+[2024-06-04 03:16:00] [CRITICAL] | score=-0.0175 | sensors=temp;pressure;vibration | suggestion=**緊急：** 溫度過高，請檢查冷卻系統組件是否有洩漏或堵塞。立即降溫！ | fallback=False
+[2024-06-04 03:17:00] [MEDIUM] | score=-0.0369 | sensors=vibration | suggestion=**振動異常，請檢查設備軸承或懸掛系統是否過度鬆動。** (Zhèndòng yìcháng, qǐng jiǎnchá shèbèi zhóuchéng huò xuànshuà xìtǒng shìfǒu guòdù sōngdòng.) | fallback=False
+[2024-06-04 03:18:00] [MEDIUM] | score=0.0470 | sensors=pressure | suggestion=檢查壓力系統，比對正常範圍。 | fallback=False
+[2024-06-04 03:19:00] [MEDIUM] | score=0.0636 | sensors=vibration | suggestion=請檢查振動傳感器周圍是否有異物或鬆動處，並留意機件的運行平穩性。 | fallback=False
+[2024-06-04 02:11:00] [CRITICAL] | score=-0.0237 | sensors=pressure;vibration | suggestion=嚴重警告：多個感測器 (pressure;vibration) 數值極端。請立即緊急停機並進行人工檢查。 | fallback=True
+[2024-06-04 02:12:00] [MEDIUM] | score=-0.0382 | sensors=vibration | suggestion=中度警告：ML 偵測到 vibration 異常模式。請密切監控是否存在漸進劣化 (drift)。 | fallback=True
+[2024-06-04 02:13:00] [MEDIUM] | score=0.0811 | sensors=vibration | suggestion=中度警告：ML 偵測到 vibration 異常模式。請密切監控是否存在漸進劣化 (drift)。 | fallback=True
+[2024-06-04 02:14:00] [MEDIUM] | score=0.1006 | sensors=temp | suggestion=中度警告：ML 偵測到 temp 異常模式。請密切監控是否存在漸進劣化 (drift)。 | fallback=True
+[2024-06-04 02:15:00] [MEDIUM] | score=0.0178 | sensors=temp | suggestion=中度警告：ML 偵測到 temp 異常模式。請密切監控是否存在漸進劣化 (drift)。 | fallback=True
+[2024-06-04 03:13:00] [MEDIUM] | score=0.1230 | sensors=vibration | suggestion=中度警告：ML 偵測到 vibration 異常模式。請密切監控是否存在漸進劣化 (drift)。 | fallback=True
+[2024-06-04 03:14:00] [MEDIUM] | score=0.0730 | sensors=vibration | suggestion=中度警告：ML 偵測到 vibration 異常模式。請密切監控是否存在漸進劣化 (drift)。 | fallback=True
+[2024-06-04 03:15:00] [CRITICAL] | score=0.0217 | sensors=temp;pressure | suggestion=嚴重警告：多個感測器 (temp;pressure) 數值極端。請立即緊急停機並進行人工檢查。 | fallback=True
+[2024-06-04 03:16:00] [CRITICAL] | score=-0.0175 | sensors=temp;pressure;vibration | suggestion=嚴重警告：多個感測器 (temp;pressure;vibration) 數值極端。請立即緊急停機並進行人工檢查。 | fallback=True
+[2024-06-04 03:17:00] [MEDIUM] | score=-0.0369 | sensors=vibration | suggestion=中度警告：ML 偵測到 vibration 異常模式。請密切監控是否存在漸進劣化 (drift)。 | fallback=True
+[2024-06-04 03:18:00] [MEDIUM] | score=0.0470 | sensors=pressure | suggestion=中度警告：ML 偵測到 pressure 異常模式。請密切監控是否存在漸進劣化 (drift)。 | fallback=True
+[2024-06-04 03:19:00] [MEDIUM] | score=0.0636 | sensors=vibration | suggestion=中度警告：ML 偵測到 vibration 異常模式。請密切監控是否存在漸進劣化 (drift)。 | fallback=True
+[2024-06-04 02:11:00] [CRITICAL] | score=-0.0237 | sensors=pressure;vibration | suggestion=**請立即檢查壓力與振動相關設備，監測是否有過載或松動現象。** (Qǐng lìjí jiǎnchá yālì yǔ zhèndòng xiāngguān shèbèi, jiāncān shìfǒu yǒu guòzài huò sōngdòng xiànxiàng.) | fallback=False
+[2024-06-04 02:12:00] [MEDIUM] | score=-0.0382 | sensors=vibration | suggestion=請檢查振動感應器附近是否有異物卡阻或機械鬆動處，並進行初步目視檢查。 | fallback=False
+[2024-06-04 02:13:00] [MEDIUM] | score=0.0811 | sensors=vibration | suggestion=請檢查振動傳感器周圍是否有異物或鬆動處。 | fallback=False
+[2024-06-04 02:14:00] [MEDIUM] | score=0.1006 | sensors=temp | suggestion=請檢查溫度感應器，可能存在漂移或灰塵積聚。 | fallback=False
+[2024-06-04 02:15:00] [MEDIUM] | score=0.0178 | sensors=temp | suggestion=請檢查溫度感應器，確認讀數是否正常。 | fallback=False
+[2024-06-04 03:13:00] [MEDIUM] | score=0.1230 | sensors=vibration | suggestion=振動異常，請檢查設備軸承是否有過度負載或潤滑不足。 | fallback=False
+[2024-06-04 03:14:00] [MEDIUM] | score=0.0730 | sensors=vibration | suggestion=請檢查振動傳感器連接或機械部件是否有輕微鬆動或異音。 | fallback=False
+[2024-06-04 03:15:00] [CRITICAL] | score=0.0217 | sensors=temp;pressure | suggestion=**立即檢查高溫和壓力異常。建議初步檢查冷卻系統及工件負載，判斷是否為過熱或超壓警報。** | fallback=False
+[2024-06-04 03:16:00] [CRITICAL] | score=-0.0175 | sensors=temp;pressure;vibration | suggestion=**立即檢查過熱、壓力及振動相關設備，初步評估故障源。** | fallback=False
+[2024-06-04 03:17:00] [MEDIUM] | score=-0.0369 | sensors=vibration | suggestion=振動異常，請檢查設備軸承或傳動系統是否有異音或鬆動點。 | fallback=False
+[2024-06-04 03:18:00] [MEDIUM] | score=0.0470 | sensors=pressure | suggestion=**建議：** 檢查壓力系統管線是否有輕微洩漏，留意壓力變化趨勢。 | fallback=False
+[2024-06-04 03:19:00] [MEDIUM] | score=0.0636 | sensors=vibration | suggestion=振動感測器偵測到異常。請檢查設備軸承或懸掛系統是否有鬆動或磨損跡象。 | fallback=False
+[2024-06-04 02:11:00] [CRITICAL] | score=-0.0237 | sensors=pressure;vibration | suggestion=**緊急維護建議：** 檢查壓力與振動感應器，可能出現過壓或異常機械負載。請立即關閉設備進行初步檢查。 | fallback=False
+[2024-06-04 02:12:00] [MEDIUM] | score=-0.0382 | sensors=vibration | suggestion=振動感測器偵測到異常，請檢查相關機件的物理連接與是否有異物卡掛。 | fallback=False
+[2024-06-04 02:13:00] [MEDIUM] | score=0.0811 | sensors=vibration | suggestion=振動感應器偵測到異常。請檢查機台支撐或傳動部件是否有鬆動或過度磨損現象，並進行初步調整或緊固檢查。 | fallback=False
+[2024-06-04 02:14:00] [MEDIUM] | score=0.1006 | sensors=temp | suggestion=**建議：** 檢查溫度感測器周圍是否有異物積聚或過熱跡象，並清潔感測器表面。 | fallback=False
+[2024-06-04 02:15:00] [MEDIUM] | score=0.0178 | sensors=temp | suggestion=**檢查溫度感測器連接或周圍熱源，防止過熱。** (Check the temperature sensor connection or surrounding heat sources to prevent overheating.) | fallback=False
+[2024-06-04 03:13:00] [MEDIUM] | score=0.1230 | sensors=vibration | suggestion=請檢查振動感應器和相關傳動部件，觀察是否有異常磨損或鬆動。 | fallback=False
+[2024-06-04 03:14:00] [MEDIUM] | score=0.0730 | sensors=vibration | suggestion=請檢查振動感測器相關的機械部件，可能存在輕微鬆動或磨損。 | fallback=False
+[2024-06-04 03:15:00] [CRITICAL] | score=0.0217 | sensors=temp;pressure | suggestion=**建議：立即檢查溫度和壓力感測器的連接與工作狀態，警惕過熱或系統負載異常。** | fallback=False
+[2024-06-04 03:16:00] [CRITICAL] | score=-0.0175 | sensors=temp;pressure;vibration | suggestion=**請立即檢查過熱、高壓或震動異常源頭。** (Immediately check the source of overheating, high pressure, or abnormal vibration.) | fallback=False
+[2024-06-04 03:17:00] [MEDIUM] | score=-0.0369 | sensors=vibration | suggestion=振動異常：請檢查設備的機械連接點，確認是否有鬆動或異物卡住。 | fallback=False
+[2024-06-04 03:18:00] [MEDIUM] | score=0.0470 | sensors=pressure | suggestion=壓力讀數略高，請檢查相關管線的接合處或閥門是否有洩漏或壓力累積。 | fallback=False
+[2024-06-04 03:19:00] [MEDIUM] | score=0.0636 | sensors=vibration | suggestion=振動感測器偵測到異常，建議檢查設備的基礎穩固性或潤滑狀況。 | fallback=False
+[2024-06-04 02:11:00] [CRITICAL] | score=-0.0237 | sensors=pressure;vibration | suggestion=嚴重警告：多個感測器 (pressure;vibration) 數值極端。請立即緊急停機並進行人工檢查。 | fallback=True
+[2024-06-04 02:12:00] [MEDIUM] | score=-0.0382 | sensors=vibration | suggestion=中度警告：ML 偵測到 vibration 異常模式。請密切監控是否存在漸進劣化 (drift)。 | fallback=True
+[2024-06-04 02:13:00] [MEDIUM] | score=0.0811 | sensors=vibration | suggestion=中度警告：ML 偵測到 vibration 異常模式。請密切監控是否存在漸進劣化 (drift)。 | fallback=True
+[2024-06-04 02:14:00] [MEDIUM] | score=0.1006 | sensors=temp | suggestion=中度警告：ML 偵測到 temp 異常模式。請密切監控是否存在漸進劣化 (drift)。 | fallback=True
+[2024-06-04 02:15:00] [MEDIUM] | score=0.0178 | sensors=temp | suggestion=中度警告：ML 偵測到 temp 異常模式。請密切監控是否存在漸進劣化 (drift)。 | fallback=True
+[2024-06-04 03:13:00] [MEDIUM] | score=0.1230 | sensors=vibration | suggestion=中度警告：ML 偵測到 vibration 異常模式。請密切監控是否存在漸進劣化 (drift)。 | fallback=True
+[2024-06-04 03:14:00] [MEDIUM] | score=0.0730 | sensors=vibration | suggestion=中度警告：ML 偵測到 vibration 異常模式。請密切監控是否存在漸進劣化 (drift)。 | fallback=True
+[2024-06-04 03:15:00] [CRITICAL] | score=0.0217 | sensors=temp;pressure | suggestion=嚴重警告：多個感測器 (temp;pressure) 數值極端。請立即緊急停機並進行人工檢查。 | fallback=True
+[2024-06-04 03:16:00] [CRITICAL] | score=-0.0175 | sensors=temp;pressure;vibration | suggestion=嚴重警告：多個感測器 (temp;pressure;vibration) 數值極端。請立即緊急停機並進行人工檢查。 | fallback=True
+[2024-06-04 03:17:00] [MEDIUM] | score=-0.0369 | sensors=vibration | suggestion=中度警告：ML 偵測到 vibration 異常模式。請密切監控是否存在漸進劣化 (drift)。 | fallback=True
+[2024-06-04 03:18:00] [MEDIUM] | score=0.0470 | sensors=pressure | suggestion=中度警告：ML 偵測到 pressure 異常模式。請密切監控是否存在漸進劣化 (drift)。 | fallback=True
+[2024-06-04 03:19:00] [MEDIUM] | score=0.0636 | sensors=vibration | suggestion=中度警告：ML 偵測到 vibration 異常模式。請密切監控是否存在漸進劣化 (drift)。 | fallback=True
+[2024-06-04 02:11:00] [CRITICAL] | score=-0.0237 | sensors=pressure;vibration | suggestion=壓力與振動異常，請檢查泵體或傳動系統是否有過載或鬆動。 | fallback=False
+[2024-06-04 02:12:00] [MEDIUM] | score=-0.0382 | sensors=vibration | suggestion=請檢查振動感應器連接，或留意設備運行穩定性。 | fallback=False
+[2024-06-04 02:13:00] [MEDIUM] | score=0.0811 | sensors=vibration | suggestion=振動異常。請檢查機械軸承的潤滑狀況，並觀察震動是否為週期性增強。 | fallback=False
+[2024-06-04 02:14:00] [MEDIUM] | score=0.1006 | sensors=temp | suggestion=溫度異常，請檢查過熱源或散熱系統。 | fallback=False
+[2024-06-04 02:15:00] [MEDIUM] | score=0.0178 | sensors=temp | suggestion=溫度過高，請檢查設備散熱系統。 | fallback=False
+[2024-06-04 03:13:00] [MEDIUM] | score=0.1230 | sensors=vibration | suggestion=**建議：** 檢查振動感測器周邊是否有松動或異物卡住的情況，留意設備運行時的異常聲響。 | fallback=False
+[2024-06-04 03:14:00] [MEDIUM] | score=0.0730 | sensors=vibration | suggestion=震動感測器偵測到異常。請檢查設備的機械穩定性和軸承狀況，初步調整或清潔振動源。 | fallback=False
+[2024-06-04 03:15:00] [CRITICAL] | score=0.0217 | sensors=temp;pressure | suggestion=**請立即檢查溫度與壓力系統，可能存在過熱或洩壓風險。建議關機冷卻組件並初步評估異常源頭。** | fallback=False
+[2024-06-04 03:16:00] [CRITICAL] | score=-0.0175 | sensors=temp;pressure;vibration | suggestion=請立即檢查溫度、壓力及振動異常點，初步排除過熱或機械卡滯。 | fallback=False
+[2024-06-04 03:17:00] [MEDIUM] | score=-0.0369 | sensors=vibration | suggestion=振動異常：請檢查設備的安裝固定和軸承狀態。 | fallback=False
+[2024-06-04 03:18:00] [MEDIUM] | score=0.0470 | sensors=pressure | suggestion=壓力感測器讀數輕微偏高。請檢查設備壓力系統是否有洩漏或堵塞，並進行初步檢修。 | fallback=False
+[2024-06-04 03:19:00] [MEDIUM] | score=0.0636 | sensors=vibration | suggestion=請檢查振動感應器和相關機械組件是否有鬆動或異物卡滯。 | fallback=False

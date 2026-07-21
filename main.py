@@ -8,7 +8,7 @@ from config import DEFAULT_REPLAY_SPEED
 
 def main():
     parser = argparse.ArgumentParser(description="Smart Factory Alert Agent CLI")
-    parser.add_argument("--evaluate", action="store_true", help="Run evaluation mode")
+    parser.add_argument("--evaluate", action="store_true", help="Run evaluation mode (ignores --no-llm and --replay-speed)")
     parser.add_argument("--no-llm", action="store_true", help="Disable LLM suggestions and use templates")
     parser.add_argument("--replay-speed", type=float, default=DEFAULT_REPLAY_SPEED,
                         help=f"Interval between alerts in seconds (default: {DEFAULT_REPLAY_SPEED})")

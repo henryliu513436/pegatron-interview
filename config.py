@@ -32,8 +32,8 @@ CAL_RATIO = 0.15     # Block B: threshold calibration (normal only, must be late
 MIN_REQUIRED_SAMPLES = 10
 
 # ---------- Generation Ranges (derived from THRESHOLDS to ensure no-gap/no-overlap) ----------
-# Format: {sensor: { "normal": (min, max), "abnormal_high": (min, max), "abnormal_low": (min, max) }}
-# Note: Vibration only has abnormal_high.
+# Format: {sensor: { "normal": (min, max), "min_limit": (min, max), "max_limit": (min, max) }}
+# Note: Vibration only has "normal" and "max_limit" (no "min_limit" or abnormal_low equivalent).
 GEN_RANGES = {
     "temp": {
         "normal": (45.0, 50.0),

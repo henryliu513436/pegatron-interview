@@ -27,6 +27,7 @@ A Smart Factory Anomaly Detection Agent with Dual-Track Detection and LLM-Powere
 ```bash
 python3 main.py
 ```
+CLI結果
 ![LLM生成結果](docs/LLM生成結果.png)
 
 ### 禁用 LLM 模式

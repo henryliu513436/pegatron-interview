@@ -28,6 +28,8 @@ A Smart Factory Anomaly Detection Agent with Dual-Track Detection and LLM-Powere
 python3 main.py
 ```
 
+**LLM 生成結果**
+
 ![LLM生成結果](docs/LLM生成結果.png)
 
 ### 禁用 LLM 模式
@@ -36,7 +38,7 @@ python3 main.py
 python3 main.py --no-llm
 ```
 
-**fallback 生成結果**
+**Fallback 生成結果**
 
 ![fallback生成結果](docs/fallback生成結果.png)
 
@@ -45,6 +47,7 @@ python3 main.py --no-llm
 ```bash
 python3 main.py --replay-speed 0.5
 ```
+**模擬序列告警生成結果**
 
 ![replay生成結果1](docs/replay-1.png)
 
@@ -58,6 +61,8 @@ python3 main.py --replay-speed 0.5
 ```bash
 python3 main.py --evaluate
 ```
+
+**僅評估生成結果**
 
 ![evaluate生成結果](docs/evaluate生成結果.png)
 

@@ -5,7 +5,7 @@ A Smart Factory Anomaly Detection Agent with Dual-Track Detection and LLM-Powere
 本專案為「智慧工廠告警 Agent」，旨在模擬工業設備感測器資料，並透過「規則式 (Rule-based)」與「機器學習 (IsolationForest)」雙軌機制即時偵測設備異常。系統會針對偵測到的異常產生分級告警，並串接 LLM 提供維護建議。
 
 
-**架構設計**
+**workflow設計**
 
 
 ![workflow](docs/workflow.png)

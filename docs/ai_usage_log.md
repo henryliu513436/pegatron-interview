@@ -31,11 +31,11 @@
 
 - [2026-07-19 03:04] 完成事項: 審計並修正 CLAUDE.md 規格漏洞，實作 config.py 及測試 | 使用者指令數: 8 | 人工程式修改: 0
 
-- [2026-07-19 22:45] 完成事項: 實作從 generate_data 到 output 的所有核心模組及其對應測試 | 使用者指令數: 11 | 人工程式修改: 0
+- [2026-07-19 22:45] 完成事項: 實作從 generate_data 到 output 的所有核心模組及其對應測試 | 使用者指令數: 79 | 人工程式修改: 0
 
 ### 2026-07-20
 
-- [2026-07-20] 完成事項: 實作 agent.py 與 main.py；修正 evaluate.py 於單一類別下 confusion_matrix 的 IndexError；重寫資料生成邏輯改為單一閾值治理（正常區間外即異常，不留生成斷層）；調整感測值精度（temp 一位、pressure/vibration 兩位）；output.py 改用 rich 呈現分級告警 | 使用者指令數: 未計數 | 人工程式修改: 0
+- [2026-07-20] 完成事項: 實作 agent.py 與 main.py；修正 evaluate.py 於單一類別下 confusion_matrix 的 IndexError；重寫資料生成邏輯改為單一閾值治理（正常區間外即異常，不留生成斷層）；調整感測值精度（temp 一位、pressure/vibration 兩位）；output.py 改用 rich 呈現分級告警 | 使用者指令數: 53 | 人工程式修改: 0
 
 ### 2026-07-21
 

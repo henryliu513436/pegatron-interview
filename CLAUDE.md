@@ -28,7 +28,7 @@ preprocess.load_raw()
     │  讀取、依 timestamp 排序、型別轉換
     ▼
 preprocess.handle_missing_values()
-    │  對 temp/pressure/vibration 線性內插 + bfill，之後不得再有 NaN
+    │  對 temp/pressure/vibration 前向填補(ffill) + bfill，之後不得再有 NaN
     ▼
 features.add_rolling_features()
     │  在「完整、未切分」的時間序列上一次計算因果 rolling 特徵
@@ -154,7 +154,7 @@ GEN_RANGES = {
 }
 
 # ---------- Preprocessing ----------
-MISSING_VALUE_STRATEGY = "linear_interpolate_then_bfill"
+MISSING_VALUE_STRATEGY = "ffill_then_bfill"
 SCALER_TYPE = "standard"      # standard | robust | minmax
 
 # ---------- Feature engineering ----------
@@ -172,7 +172,7 @@ ML_FEATURE_COLUMNS = (
 
 # ---------- ML detector (IsolationForest) ----------
 IF_N_ESTIMATORS = 100
-IF_CONTAMINATION = 0.01       # 僅作內部正則化，非實際告警閾值來源
+IF_CONTAMINATION = 0.01       
 IF_RANDOM_STATE = 42
 THRESHOLD_PERCENTILE = 5      # 取 cal 集 decision_function 分布的第 5 百分位作為 ml threshold
 
@@ -230,7 +230,7 @@ def load_raw(path: str = RAW_DATA_PATH) -> pd.DataFrame:
 ```python
 def handle_missing_values(df: pd.DataFrame) -> pd.DataFrame:
 ```
-對 `RAW_SENSOR_COLUMNS` 三欄位依 `MISSING_VALUE_STRATEGY`：先 `df[col].interpolate(method="linear")`，序列開頭仍缺值者再 `bfill()`。處理後三欄位不得再有 `NaN`，否則 `raise ValueError`。**必須在 `features.add_rolling_features()` 之前呼叫**。
+對 `RAW_SENSOR_COLUMNS` 三欄位依 `MISSING_VALUE_STRATEGY`：先 `df[col].ffill()`（前向填補，僅取用過去值以維持因果性），序列開頭無前值可補者再 `bfill()` 收尾。處理後三欄位不得再有 `NaN`，否則 `raise ValueError`。**必須在 `features.add_rolling_features()` 之前呼叫**。
 
 ```python
 def temporal_split(

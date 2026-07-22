@@ -70,7 +70,7 @@ ML_FEATURE_COLUMNS = (
 
 # ---------- ML detector (IsolationForest) ----------
 IF_N_ESTIMATORS = 100
-IF_CONTAMINATION = 0.01       # Internal regularization only, not the actual alert threshold
+IF_CONTAMINATION = 0.01       
 IF_RANDOM_STATE = 42
 THRESHOLD_PERCENTILE = 5      # Use 5th percentile of cal set decision_function for ml threshold
 

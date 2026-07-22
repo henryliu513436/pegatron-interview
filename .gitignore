@@ -15,3 +15,13 @@ report.html
 
 # 公司提供的作業題目原稿，不公開至 public repo
 PEGAAi_ML_Engineer_Assignment*.pdf
+
+# 繳交用 Word/PDF 與說明草稿（PDF 走 email 繳交，不進 repo）
+作業三.docx
+作業三.pdf
+~$*.docx
+說明.md
+
+# 圖表原始碼與去背中繼檔（不進 repo）
+docs/architecture.mmd
+docs/*沒背景.png

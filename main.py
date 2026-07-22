@@ -1,10 +1,39 @@
 import argparse
 import sys
+from rich.console import Console
+from rich.table import Table
+
 from agent import run_pipeline
 from llm_advisor import generate_suggestion
 from evaluate import evaluate
 from output import replay
-from config import DEFAULT_REPLAY_SPEED
+from config import DEFAULT_REPLAY_SPEED, RAW_DATA_PATH
+
+console = Console()
+
+def render_load_summary(stats: dict) -> None:
+    """
+    Prints the data ingestion summary to the CLI.
+
+    Display only: reports what the pipeline read and how it was split,
+    so the data loading stage is visible rather than implicit.
+    """
+    table = Table(title="Data Loading", title_style="bold cyan", show_header=False, box=None)
+    table.add_column(style="dim")
+    table.add_column(style="white")
+
+    table.add_row("來源", RAW_DATA_PATH)
+    table.add_row("載入筆數", f"{stats['rows']} 筆")
+    table.add_row("時間範圍", f"{stats['time_start']} ~ {stats['time_end']}")
+    table.add_row("缺失值補齊", f"{stats['missing_filled']} 個 (ffill -> bfill)")
+    table.add_row("特徵維度", f"{stats['n_features']} 維")
+    table.add_row(
+        "時序切分",
+        f"train {stats['train_rows']} / cal {stats['cal_rows']} / test {stats['test_rows']} 筆",
+    )
+
+    console.print(table)
+    console.print()
 
 def main():
     parser = argparse.ArgumentParser(description="Smart Factory Alert Agent CLI")
@@ -19,6 +48,12 @@ def main():
     results = run_pipeline()
     alerts_df = results["alerts_df"]
     test_df = results["test_df"]
+
+    # Show what was ingested before reporting on it.
+    # Guarded: stats is display-only, so its absence must not break the run.
+    stats = results.get("stats")
+    if stats:
+        render_load_summary(stats)
 
     # 2. Handle mutually exclusive modes
     if args.evaluate:

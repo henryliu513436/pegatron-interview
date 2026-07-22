@@ -1,6 +1,6 @@
 import pandas as pd
 from typing import Any
-from config import RAW_DATA_PATH
+from config import RAW_DATA_PATH, RAW_SENSOR_COLUMNS, ML_FEATURE_COLUMNS
 
 import generate_data
 import preprocess
@@ -37,6 +37,16 @@ def run_pipeline() -> dict[str, Any]:
 
     # 2. Initial Preprocessing
     df = preprocess.load_raw(RAW_DATA_PATH)
+
+    # Capture load statistics for CLI reporting.
+    # Observation only: these values are never fed back into detection.
+    load_stats = {
+        "rows": len(df),
+        "time_start": df["timestamp"].min(),
+        "time_end": df["timestamp"].max(),
+        "missing_filled": int(df[RAW_SENSOR_COLUMNS].isna().sum().sum()),
+    }
+
     df = preprocess.handle_missing_values(df)
 
     # 3. Feature Engineering (Causal Rolling Features on full sequence)
@@ -45,6 +55,13 @@ def run_pipeline() -> dict[str, Any]:
     # 4. Temporal Split
     # train_fit: Block A (normal only), cal: Block B (normal only), test: Block C (mixed)
     train_fit, cal, test = preprocess.temporal_split(df)
+
+    load_stats.update({
+        "train_rows": len(train_fit),
+        "cal_rows": len(cal),
+        "test_rows": len(test),
+        "n_features": len(ML_FEATURE_COLUMNS),
+    })
 
     # 5. Scaling
     scaler = preprocess.fit_scaler(train_fit)
@@ -69,8 +86,6 @@ def run_pipeline() -> dict[str, Any]:
     # Merge ML results (ml_score, ml_flag) AND ALL scaled features back into the original 'test' DataFrame
     # Ensemble.combine needs the raw sensor scaled values for MEDIUM alerts.
     # test_run_pipeline_causal_consistency checks for all ML_FEATURE_COLUMNS scaled versions.
-    from config import RAW_SENSOR_COLUMNS, ML_FEATURE_COLUMNS
-
     ml_cols = ["ml_score", "ml_flag"]
     scaled_cols = [f"{c}_scaled" for c in ML_FEATURE_COLUMNS]
 
@@ -93,5 +108,6 @@ def run_pipeline() -> dict[str, Any]:
         "test_df": test_df,
         "scaler": scaler,
         "ml_model": ml_model,
-        "ml_threshold": ml_threshold
+        "ml_threshold": ml_threshold,
+        "stats": load_stats
     }

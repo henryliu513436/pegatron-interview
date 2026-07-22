@@ -4,6 +4,12 @@ A Smart Factory Anomaly Detection Agent with Dual-Track Detection and LLM-Powere
 ## 1. 專案簡介
 本專案為「智慧工廠告警 Agent」，旨在模擬工業設備感測器資料，並透過「規則式 (Rule-based)」與「機器學習 (IsolationForest)」雙軌機制即時偵測設備異常。系統會針對偵測到的異常產生分級告警，並串接 LLM 提供維護建議。
 
+
+**架構設計**
+
+
+![workflow](docs/workflow.png)
+
 ## 2. 環境需求與安裝步驟
 ### 環境需求
 - Python 3.10+
@@ -85,6 +91,11 @@ python3 main.py --evaluate
 | `output.py` | 告警格式化輸出與 `alerts.log` 寫入 |
 | `generate_data.py` | 生成含常態分佈與多樣化異常事件的模擬資料 |
 | `tests/` | 存放所有單元測試與集成測試 |
+
+
+**架構設計**
+
+![architecture](docs/architecture.png)
 
 ## 5. 資料格式
 - **檔案路徑**：`data/raw_data.csv`
